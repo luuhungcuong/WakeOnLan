@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WOL.Views.DevicesPage"            
+             Title="{Binding Title}" Icon="{Binding Icon}" IsBusy="{Binding IsBusy}"
+            >
+  <TabbedPage.Children>
+    <ContentPage Title="Services">
+      <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         Orientation="Vertical"
+                         Spacing="15">
+          <Label Text="Keep all devices in Devices tab alive by sending magic packet with specify frequency time (seconds). 
+                 You need to disable and enable services again to apply new frequency value."
+              LineBreakMode="WordWrap" FontAttributes="Italic" TextColor="Blue"/>
+          <Grid Padding="20">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="Auto"/>
+              <ColumnDefinition Width="75*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="*" />              
+            </Grid.RowDefinitions>
+            <Label Grid.Column="0" Grid.Row="0" Text="Keep all devices alive" FontAttributes="Bold" TextColor="Green"
+                   HorizontalOptions="StartAndExpand"
+                    VerticalOptions = "Center"/>
+            <Switch x:Name="swtKeepAlive" Toggled="swtKeepAlive_Toggled"
+                  Grid.Column="1"  Grid.Row="0"
+                  HorizontalOptions = "End"
+                  VerticalOptions = "Center"  WidthRequest="75" 
+                  />
+            <!--<Label Grid.Column="0" Grid.Row="1" Text="Keep all devices alive by TCP" FontAttributes="Bold" TextColor="Green"
+                   HorizontalOptions="StartAndExpand"
+                    VerticalOptions = "Center"/>
+            <Switch x:Name="swtKeepAliveTCP" Toggled="swtKeepAliveTCP_Toggled" IsToggled="True"
+                  Grid.Column="1"  Grid.Row="1"
+                  HorizontalOptions = "End"
+                  VerticalOptions = "Center"  WidthRequest="75"
+                  />-->
+            <Label Text="Frequency(seconds)" Grid.Column="0" Grid.Row="2" HorizontalOptions="StartAndExpand" VerticalOptions = "Center" FontAttributes="Bold" TextColor="Red"/>
+            <Picker x:Name="picTime" SelectedIndex="1"
+                     Grid.Column="1" Grid.Row="2"
+                    HorizontalOptions="End"
+                    VerticalOptions = "Center"  WidthRequest="50" 
+                    >
+              <Picker.Items>                
+                <x:String>3</x:String>
+                <x:String>5</x:String>
+                <x:String>10</x:String>                
+                <x:String>60</x:String>                
+                <x:String>180</x:String>
+                <x:String>300</x:String>
+                <x:String>1800</x:String>
+              </Picker.Items>
+            </Picker>
+          </Grid>
+        </StackLayout>
+      </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="Devices">
+      <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         Orientation="Vertical"
+                         Spacing="15">
+          <Label Text="Pull down to refresh status of devices and hold device to open menu" VerticalTextAlignment="Center" FontAttributes="Italic"/>
+          <ListView x:Name="lstRegister">
+            <ListView.RowHeight>
+              <OnPlatform x:TypeArguments="x:Int32"
+              iOS="80"
+              Android="100"
+              WinPhone="90" />
+            </ListView.RowHeight>
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <ViewCell.ContextActions>
+                    <!--<MenuItem Clicked="OnKeepOnlineBySocket" CommandParameter="{Binding .}" Text="Socket" />
+                    <MenuItem Clicked="OnKeepOnlineByTCP" CommandParameter="{Binding .}" Text="TCP" />-->
+                    <MenuItem Clicked="OnWakeUp" CommandParameter="{Binding .}" Text="Wake up" />
+                    <MenuItem Clicked="OnEdit" CommandParameter="{Binding .}" Text="Edit" />
+                    <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" />
+                  </ViewCell.ContextActions>
+                  <ContentView Padding="5">
+                    <Frame Padding="10">
+                      <StackLayout Orientation="Horizontal">
+                        <Image Source="{Binding Icon}" WidthRequest="75" HeightRequest="75"/>
+                        <StackLayout>
+                          <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="Blue"/>
+                          <Label Text="{Binding MAC}" />
+                          <Label Text="{Binding IP}" />                          
+                        </StackLayout>
+                      </StackLayout>
+                    </Frame>
+                  </ContentView>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+        </StackLayout>
+      </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="Network">
+      <ContentPage.Content>
+        <StackLayout>
+          <Label Text="Pull down to refresh and hold item to open menu" VerticalTextAlignment="Center" FontAttributes="Italic"/>
+          <ListView x:Name="lstAvailable">
+            <ListView.RowHeight>
+              <OnPlatform x:TypeArguments="x:Int32"
+              iOS="80"
+              Android="100"
+              WinPhone="90" />
+            </ListView.RowHeight>
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <ViewCell.ContextActions>
+                    <MenuItem Clicked="OnRegister" CommandParameter="{Binding .}" Text="Register" />
+                  </ViewCell.ContextActions>
+                  <ContentView Padding="5">
+                    <Frame Padding="10">
+                      <StackLayout Orientation="Horizontal">
+                        <Image Source="{Binding Icon}" WidthRequest="75" HeightRequest="75"/>
+                        <StackLayout>
+                          <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="Blue"/>
+                          <Label Text="{Binding MAC}" />
+                          <Label Text="{Binding IP}" />
+                        </StackLayout>
+                      </StackLayout>
+                    </Frame>
+                  </ContentView>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+        </StackLayout>
+      </ContentPage.Content>
+    </ContentPage>
+  </TabbedPage.Children>
+</TabbedPage>

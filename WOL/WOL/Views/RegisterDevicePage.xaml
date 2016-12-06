@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WOL.Views.RegisterDevicePage"
+              xmlns:controls="clr-namespace: WOL.Controls;assembly= WOL" Padding="10, 10">
+  <ContentPage.Content>
+    <StackLayout VerticalOptions="FillAndExpand"
+                   HorizontalOptions="FillAndExpand"
+                   Orientation="Vertical">
+      
+        <Label Text="Nick name:" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold" TextColor="Blue"/>
+        <Entry x:Name="txtName" Text="{Binding Name}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
+        <Label Text="MAC address:" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold" TextColor="Blue"/>
+        <Entry x:Name="txtMAC" Text="{Binding MAC}" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
+        <Label Text="IP address:" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold" TextColor="Blue"/>
+        <Entry x:Name="txtIP" Text="{Binding IP}" VerticalOptions="Start" HorizontalOptions="FillAndExpand"/>
+        <Label Text="Port:" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold" TextColor="Blue"/>
+        <Entry x:Name="txtPort" Text="{Binding Port}" VerticalOptions="Start" HorizontalOptions="FillAndExpand"/>
+        <Label Text="Icon:" VerticalOptions="Start" HorizontalOptions="Start" FontAttributes="Bold" TextColor="Blue"/>
+        <StackLayout Orientation="Horizontal">
+          <Image x:Name="system" Source="{Binding Icon}" WidthRequest="75" HeightRequest="75"/>
+          <Picker x:Name="picType" SelectedIndex="1"
+                      Grid.Column="1" Grid.Row="1"
+                     HorizontalOptions="FillAndExpand"
+                     VerticalOptions = "Start"
+                     SelectedIndexChanged="picType_SelectedIndexChanged"
+                   >
+            <Picker.Items>
+              <x:String>Computer</x:String>
+              <x:String>Desktop</x:String>
+              <x:String>Laptop</x:String>
+              <x:String>NAS</x:String>
+              <x:String>Printer</x:String>
+              <x:String>Other</x:String>
+            </Picker.Items>
+          </Picker>
+        </StackLayout>
+        <Button x:Name="btnOk" Text="Ok" Clicked="btnOk_OnClicked" HorizontalOptions="FillAndExpand" VerticalOptions = "End" TextColor="Green"/>
+      
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

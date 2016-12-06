@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:WOL"
+             x:Class="WOL.MainPage">
+  <TabbedPage.Children>
+    <ContentPage Title="Control">
+      <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand"
+                         HorizontalOptions="FillAndExpand"
+                         Orientation="Vertical"
+                         Spacing="15">
+          <ListView x:Name="lstRegister">
+            <ListView.RowHeight>
+              <OnPlatform x:TypeArguments="x:Int32"
+              iOS="80"
+              Android="100"
+              WinPhone="90" />
+            </ListView.RowHeight>
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <ViewCell.ContextActions>
+                    <MenuItem Clicked="OnWakeUp" CommandParameter="{Binding .}" Text="WakeUp" />
+                    <MenuItem Clicked="OnDelete" CommandParameter="{Binding .}" Text="Delete" />
+                  </ViewCell.ContextActions>
+                  <ContentView Padding="5">
+                    <Frame OutlineColor="Accent" Padding="10">
+                      <StackLayout Orientation="Horizontal">
+                        <BoxView x:Name="boxView" Color="Blue" WidthRequest="50" HeightRequest="100" />
+                        <StackLayout>
+                          <Label Text="{Binding Name}" FontSize="22"/>
+                          <Label Text="{Binding MAC}"  FontSize="10"/>
+                          <Label Text="{Binding IP}"   FontSize="10"/>
+                        </StackLayout>
+                      </StackLayout>
+                    </Frame>
+                  </ContentView>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>          
+        </StackLayout>
+      </ContentPage.Content>
+    </ContentPage>
+    <ContentPage Title="Devices">
+      <ContentPage.Content>
+        <StackLayout>
+          <Label Text="Pull down to refresh list" FontSize="22"/>
+          <ListView x:Name="lstAvailable">
+            <ListView.RowHeight>
+              <OnPlatform x:TypeArguments="x:Int32"
+              iOS="80"
+              Android="100"
+              WinPhone="90" />
+            </ListView.RowHeight>
+            <ListView.ItemTemplate>
+              <DataTemplate>
+                <ViewCell>
+                  <ViewCell.ContextActions>
+                    <MenuItem Clicked="OnRegister" CommandParameter="{Binding .}" Text="Register" />                    
+                  </ViewCell.ContextActions>
+                  <ContentView Padding="5">
+                    <Frame OutlineColor="Accent" Padding="10">
+                      <StackLayout Orientation="Horizontal">
+                        <BoxView x:Name="boxView" Color="Blue" WidthRequest="50" HeightRequest="100" />
+                        <StackLayout>
+                          <Label Text="{Binding Name}" FontSize="22"/>
+                          <Label Text="{Binding MAC}"  FontSize="10"/>
+                          <Label Text="{Binding IP}"   FontSize="10"/>                          
+                        </StackLayout>
+                      </StackLayout>
+                    </Frame>
+                  </ContentView>
+                </ViewCell>
+              </DataTemplate>
+            </ListView.ItemTemplate>
+          </ListView>
+        </StackLayout>
+      </ContentPage.Content>
+    </ContentPage>
+  </TabbedPage.Children>
+</TabbedPage>

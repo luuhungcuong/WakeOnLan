@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WOL.Views.AboutPage"
+             Title="Wake On Lan">
+  <ScrollView>
+    <StackLayout Orientation="Vertical" Spacing="10"
+                   Padding="10"
+                   VerticalOptions="FillAndExpand"
+                 HorizontalOptions="FillAndExpand">
+
+      <Frame Padding="10" OutlineColor="Green">
+        <StackLayout>
+          <Label Text="How does WakeOnLan app work" FontAttributes="Bold" TextColor="Blue" LineBreakMode="WordWrap"/>
+          <Label Text="WakeOnLan wake your devices up by sending magic packet. Your devies need to enable this function before use." LineBreakMode="WordWrap"/>
+        </StackLayout>
+      </Frame>
+      <Frame Padding="10" OutlineColor="Green">
+        <StackLayout>
+          <Label Text="How to find my devices in network" FontAttributes="Bold" TextColor="Blue" LineBreakMode="WordWrap"/>
+          <Label Text="Go to network tab and pull down to finding devices in network" LineBreakMode="WordWrap"/>
+        </StackLayout>
+      </Frame>
+      <Frame Padding="10" OutlineColor="Green">
+        <StackLayout>
+          <Label Text="How to register my devices" FontAttributes="Bold" TextColor="Blue" LineBreakMode="WordWrap"/>
+          <Label Text="Hold device in network tab to open context menu and click on register menu." LineBreakMode="WordWrap"/>
+        </StackLayout>
+      </Frame>
+      <Frame Padding="10" OutlineColor="Purple">
+        <StackLayout>
+          <Label Text="How to edit default devices information " FontAttributes="Bold" TextColor="Blue" LineBreakMode="WordWrap"/>
+          <Label Text="Hold device in device tab to open context menu and click on edit menu." LineBreakMode="WordWrap"/>
+        </StackLayout>
+      </Frame>
+      <Frame Padding="10" OutlineColor="Green">
+        <StackLayout>
+          <Label Text="How to wake up my devices" FontAttributes="Bold" TextColor="Blue" LineBreakMode="WordWrap"/>
+          <Label Text="Hold device in device tab to open context menu and click on wake up menu." LineBreakMode="WordWrap"/>
+        </StackLayout>
+      </Frame>
+      <Frame Padding="10" OutlineColor="Purple">
+        <StackLayout>
+          <Label Text="How to keep my devices alive" FontAttributes="Bold" TextColor="Blue" LineBreakMode="WordWrap"/>
+          <Label Text="Enable Keep alive option in in services tab to keep your devices alive by sending WOL packets in specify frequency value. If you change frequency values you need to disable and enable keep alive option again to apply new value." LineBreakMode="WordWrap"/>
+        </StackLayout>
+      </Frame>
+      <StackLayout Orientation="Horizontal"
+                  HorizontalOptions="CenterAndExpand"
+                  Spacing="10">
+
+        <Image x:Name="twitter" Source="desktop_offline.png"  WidthRequest="50" HeightRequest="50"/>
+        <Image x:Name="facebook" Source="desktop_online.png"  WidthRequest="50" HeightRequest="50"/>
+      </StackLayout>
+    </StackLayout>
+  </ScrollView>
+</ContentPage>
